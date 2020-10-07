@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./favicon.ico">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<title>Pure JavaScript Excel</title>
+</head>
+<body>
+	<div id="app" class="container">
+		
+		<main class="excel">
+			
+			<header class="excel__header header">
+
+				<input class="header__input" type="text" value="Новая таблица">
+
+				<div class="header__functional">
+					<button class="header__button button button--delete">
+						<span class="material-icons">delete</span>
+					</button>
+
+					<button class="header__button button button--close">
+						<span class="material-icons">exit_to_app</span>
+					</button>
+				</div>
+
+			</header>
+
+			<section class="excel__toolbar toolbar">
+
+				<button class="toolbar__button button">
+					<span class="material-icons">format_align_left</span>
+				</button>
+
+				<button class="toolbar__button button">
+					<span class="material-icons">format_align_center</span>
+				</button>
+
+				<button class="toolbar__button button">
+					<span class="material-icons">format_align_right</span>
+				</button>
+
+				<button class="toolbar__button button">
+					<span class="material-icons">format_bold</span>
+				</button>
+
+				<button class="toolbar__button button">
+					<span class="material-icons">format_italic</span>
+				</button>
+
+				<button class="toolbar__button button">
+					<span class="material-icons">format_underline</span>
+				</button>
+
+			</section>
+
+			<section class="excel__formula formula">
+				<div class="formula__info">
+					fx
+				</div>
+
+				<div class="formula__input" contenteditable spellcheck="false"></div>
+
+				<!-- <input class="formula__input" type="text" value=""> -->
+			</section>
+
+			<section class="excel__table table">
+				
+				<div class="table__row">
+					
+					<div class="table__row-info">
+						
+					</div>
+					<!-- /row__info -->
+
+					<div class="table__data">
+						<div class="table__column">
+							A
+						</div>
+
+						<div class="table__column">
+							B
+						</div>
+
+						<div class="table__column">
+							C
+						</div>
+					</div>
+					<!-- /row__data -->
+				</div>
+				<!-- /table__row -->
+
+				<div class="table__row">
+					
+					<div class="table__row-info">
+						1
+					</div>
+					<!-- /row__info -->
+
+					<div class="table__data">
+
+						<div class="table__cell table__cell--selected" contenteditable>A1</div>
+
+						<div class="table__cell" contenteditable>B1</div>
+
+						<div class="table__cell" contenteditable>C1</div>
+						
+					</div>
+					<!-- /row__data -->
+				</div>
+				<!-- /table__row -->
+
+				<div class="table__row">
+					
+					<div class="table__row-info">
+						2
+					</div>
+					<!-- /row__info -->
+
+					<div class="table__data">
+
+						<div class="table__cell table__cell" contenteditable>A2</div>
+
+						<div class="table__cell" contenteditable>B2</div>
+
+						<div class="table__cell" contenteditable>C2</div>
+						
+					</div>
+					<!-- /row__data -->
+				</div>
+				<!-- /table__row -->
+			</section>
+			<!-- /excel__table -->
+			
+		</main>
+
+	</div>
+</body>
+</html>

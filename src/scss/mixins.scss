@@ -1,0 +1,100 @@
+///////////////Mixins///////////////////  
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin universalPosition {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+@mixin button($color) {
+        
+    position: relative;
+
+    display: inline-block;
+
+    height: 24px;
+    min-width: 24px;
+    padding: 3px;
+
+    background: #fff;
+
+    color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+
+    &:active, .active {
+        color: $color;
+    }
+
+    &:hover {
+        background: #eee;
+
+        cursor: pointer;
+    }
+
+    .material-icons {
+        font-size: 18px;
+    }
+}
+
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+@mixin respond($breakpoint) {
+
+    @if $breakpoint == smallest-width {
+        @media only screen and (max-width: 26.87em) { @content };    //500px
+    }
+
+    @if $breakpoint == small-width {
+        @media only screen and (max-width: 31.25em) { @content };    //500px
+    }
+
+    @if $breakpoint == bp-small {
+        @media only screen and (max-width: 37.5em) { @content };    //600px
+    }
+
+    @if $breakpoint == bp-medium {
+        @media only screen and (max-width: 50em) { @content };    //800px
+    }
+
+    @if $breakpoint == bp-large {
+        @media only screen and (max-width: 62.5em) { @content };     //1000px
+    }
+
+    @if $breakpoint == bp-largest {
+        @media only screen and (max-width: 75em) { @content };    //1200px
+    }
+}
+
+
+//////////////////////////////////////////////

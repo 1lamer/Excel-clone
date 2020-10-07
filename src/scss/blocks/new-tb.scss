@@ -1,0 +1,33 @@
+//tb = table
+.new-tb {
+	padding: 1.5rem;
+
+	background: #dadce0;
+
+
+	&__create {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 160px;
+		height: 160px;
+
+		border: 1px solid #dadce0;
+		border-radius: 4px;
+
+		background: #fff;
+
+		font-size: 1.5rem;
+		text-align: center;
+		color: #000;
+
+		&:hover {
+			border-color: green;
+
+			cursor: pointer;
+
+			color: green;
+		}
+	}
+}
