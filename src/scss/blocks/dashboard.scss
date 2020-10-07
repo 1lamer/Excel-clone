@@ -1,0 +1,19 @@
+//db = dashborad
+//tb = table
+.dashboard {
+
+	&__db-header {
+		position: fixed;
+		z-index: 1000;
+		left: 0;
+		right: 0;
+		top: 0;
+	}
+
+	&__new-tb {
+		margin-top: $db-header-height;
+	}
+
+	&__earlier-tb {
+	}
+}

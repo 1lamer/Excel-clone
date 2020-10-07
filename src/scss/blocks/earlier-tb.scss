@@ -1,0 +1,46 @@
+//tb = table
+.earlier-tb {
+	padding: 1rem;
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+
+		margin-bottom: 10px;
+		padding: 0 12px;
+
+		font-size: 16px;
+		font-weight: 500;
+		color: #202124;
+	}
+
+	&__list {
+
+	}
+
+	&__record {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		padding: 12px 14px 12px 16px;
+		margin-bottom: 10px;
+
+		&:hover {
+			border-radius: 25px;
+			
+			background: #e6f4ea;
+		}
+
+		a {
+			cursor: pointer;
+
+			font-size: 14px;
+			color: #202124;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

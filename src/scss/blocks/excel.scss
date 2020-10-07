@@ -1,0 +1,31 @@
+.excel {
+	position: relative;
+
+	height: 100%;
+	min-width: 100%;
+
+	font-size: 0.8rem;
+    color: $color-primary;
+
+	&__header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+
+	&__toolbar {
+		@include universalPosition;
+		top: $header-height;
+	}
+
+	&__formula {
+		@include universalPosition;
+		top: $header-height + $toolbar-height;
+	}
+
+	&__table {
+		@include universalPosition;
+		top: $header-height + $toolbar-height + $formula-height;
+	}
+}
