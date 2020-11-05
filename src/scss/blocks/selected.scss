@@ -1,0 +1,6 @@
+.selected {
+	z-index: 2;
+
+	border: none;
+	outline: 2px solid $selection-color;
+}
