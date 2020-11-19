@@ -8,6 +8,7 @@
 	border-bottom: 1px solid $border-color;
 
 	&__button {
-		@include button(green)
+		@include button(green);
 	}
 }
+

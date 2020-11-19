@@ -1,0 +1,16 @@
+
+export function createHeader(title) {
+	return `
+		<input class="header__input" type="text" value="${title}"">
+
+		<div class="header__functional">
+			<button class="header__button button button--delete">
+				<span class="material-icons">delete</span>
+			</button>
+
+			<button class="header__button button button--close">
+				<span class="material-icons">exit_to_app</span>
+			</button>
+		</div>
+	`
+}

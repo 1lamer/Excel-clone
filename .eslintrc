@@ -22,7 +22,9 @@
 		"no-mixed-spaces-and-tabs": "off",
 		"no-undef": "off",
 		"no-unused-vars": "off",
-		"no-multiple-empty-lines": "off"
+		"no-multiple-empty-lines": "off",
+		"no-debugger": "off",
+		"no-invalid-this": "off",
 	},
 	"extends": ["eslint:recommended", "google"],
 }

@@ -21,7 +21,7 @@
     right: 0;
 }
 
-@mixin button($color) {
+@mixin button($color: green) {
         
     position: relative;
 
@@ -36,7 +36,7 @@
     color: rgba(0, 0, 0, 0.7);
     text-align: center;
 
-    &:active, .active {
+    &:active, &.active {
         color: $color;
     }
 
