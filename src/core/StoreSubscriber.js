@@ -16,12 +16,17 @@ export class StoreSubscriber {
 					components.forEach(component => {
 						if (component.isWatching(key)) {
 							const changes = {[key]: state[key]}
+							console.log(changes);
 							component.storeChanged(changes)
 						}
 					})
 				}
 			})
 			this.prevState = this.store.getState()
+
+			if (process.env.NODE_ENV === 'development') {
+				window['redux'] = this.prevState
+			}
 		})
 	}
 

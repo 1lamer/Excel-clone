@@ -20,13 +20,12 @@ export class Table extends ExcelComponent {
 		})
 	}
 
+	prepare() {
+		this.selection = new TableSelection()
+	}
 	
 	toHTML() {
 		return createTable(20, this.store.getState())
-	}
-
-	prepare() {
-		this.selection = new TableSelection()
 	}
 
 	init() {
@@ -118,7 +117,6 @@ export class Table extends ExcelComponent {
 	}
 
 	onInput(event) {
-		// this.$emit('table:input', $(event.target))
 		this.updateTextInStore($(event.target).text())
 	}
 }
