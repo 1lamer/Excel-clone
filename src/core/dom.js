@@ -15,8 +15,9 @@ class Dom {
 	}
 
 	text(text) {
+		// console.log(this.$el);
 		if (typeof text !== 'undefined') {
-			this.$el.textContent = text
+			this.$el.textContent = text || ''
 			
 			return this
 		}
@@ -109,7 +110,7 @@ class Dom {
 			this.$el.setAttribute(name, value)
 			return this
 		}
-		return this.$el.getAttribute(name)
+		return $(this.$el)
 	}
 
 	addClass(className) {
@@ -130,7 +131,9 @@ export function $(selector) {
 
 $.create = (tagName, classes = '') => {
 	const el = document.createElement(tagName)
-	if (classes) {
+	if (typeof classes === 'string') {
+		el.classList.add(classes)
+	} else {
 		el.classList.add(...classes)
 	}
 	return $(el)

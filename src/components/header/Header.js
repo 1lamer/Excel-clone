@@ -4,6 +4,7 @@ import {changeTitle} from '@/redux/actions'
 import {defaultTitle} from '@/constants'
 import {debounce} from '@/core/utils'
 import {$} from '@core/dom'
+import {ActiveRoute} from '@core/routes/ActiveRoute'
 
 export class Header extends ExcelStateComponent {
 	static className = ['excel__header', 'header']
@@ -11,7 +12,7 @@ export class Header extends ExcelStateComponent {
 	constructor($root, options) {
 		super($root, {
 			name: 'Header',
-			listeners: ['input'],
+			listeners: ['input', 'click'],
 			subscribe: ['title'],
 			...options
 		})
@@ -29,5 +30,19 @@ export class Header extends ExcelStateComponent {
 	onInput(event) {
 		const $target = $(event.target)
 		this.$dispatch(changeTitle($target.text()))
+	}
+
+	onClick(event) {
+		const $target = $(event.target)
+
+		if ($target.data.type === 'delete') {
+			const decision = confirm('Do you really wanna delete this table?')
+			if (decision) {
+				localStorage.removeItem(`excel:${ActiveRoute.param}`)
+				ActiveRoute.navigate('')
+			}
+		} else if ($target.data.type === 'exit') {
+			ActiveRoute.navigate('')
+		}
 	}
 }
