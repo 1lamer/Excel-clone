@@ -138,3 +138,6 @@ $.create = (tagName, classes = '') => {
 	}
 	return $(el)
 }
+
+// For testing
+// module.exports = {$}
