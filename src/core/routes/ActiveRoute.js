@@ -11,3 +11,6 @@ export class ActiveRoute {
 		return window.location.hash = path
 	}
 }
+
+// For testing
+// module.exports = {ActiveRoute}

@@ -1,6 +1,10 @@
 import {$} from '@core/dom'
 import {ActiveRoute} from '@core/routes/ActiveRoute'
 
+// For testing
+// const {$} = require('./../dom')
+// const {ActiveRoute} = require('./ActiveRoute')
+
 export class Router {
 	constructor(selector, routes) {
 		if (!selector) {
@@ -42,3 +46,6 @@ export class Router {
 		window.removeEventListener('hashchange', this.changePageHandler)
 	}
 }
+
+// For testing
+// module.exports = {Router}

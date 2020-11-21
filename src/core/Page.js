@@ -15,3 +15,6 @@ export class Page {
 
 	}
 }
+
+// For testing
+// module.exports = {Page}
