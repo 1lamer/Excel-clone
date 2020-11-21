@@ -14,22 +14,51 @@ function storageName(param) {
 	return 'excel:' + param
 }
 
-export class ExcelPage extends Page {
-	constructor(params) {
-		super(params)
+class StateProcessor() {
+	constructor(client, delay = 300) {
+		this.client = client
+		this.listen = debounce(this.listen.bind(this), delay)
 	}
 
-	getRoot() {
-		const params = this.params ? this.params : Date.now().toString()
+	listen() {
+		this.client.save(state)
+	}
 
-		const state = storage(storageName(params))
-		const store = createStore(rootReducer, normalizeInitialState(state))
+	get() {
+		return this.client.get()
+	}
+}
 
-		const stateListener = debounce( state => {
-			storage(storageName(params), state)
-		}, 300)
+class LocalStorageClient {
+	constructor(name) {
+		this.name = name
+	}
+}
 
-		store.subscribe(stateListener)
+export class ExcelPage extends Page {
+	constructor(param) {
+		super(param)
+
+		this.storeSub = null
+		this.processor = new StateProcessor(
+			new LocalStorageClient(this.params)
+		)
+	}
+
+	async getRoot() {
+		// const params = this.params ? this.params : Date.now().toString()
+
+		// const state = storage(storageName(params))
+		const state = await this.processor.get()
+		const initialState = normalizeInitialState(state)
+		const store = createStore(rootReducer, initialState)
+
+		// const stateListener = debounce( state => {
+		// 	storage(storageName(params), state)
+		// }, 300)
+
+
+		this.storeSub = store.subscribe(this.processor.listen)
 
 		this.excel = new Excel({
 			components: [Header, Toolbar, Formula, Table],
@@ -45,5 +74,6 @@ export class ExcelPage extends Page {
 
 	destroy() {
 		this.excel.destroy()
+		this.storeSub.unsubscribe()
 	}
 }
