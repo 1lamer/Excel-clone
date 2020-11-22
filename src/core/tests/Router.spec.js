@@ -1,5 +1,5 @@
 // const {Router} = require('./../routes/Router')
-// const {Page} = require('./../Page')
+// const {Page} = require('./../page/Page')
 
 
 // class DashboardPage extends Page {

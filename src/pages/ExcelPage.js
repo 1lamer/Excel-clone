@@ -1,4 +1,4 @@
-import {Page} from '@core/Page'
+import {Page} from '@core/page/Page'
 import {Excel} from '@/components/excel/Excel'
 import {Header} from '@/components/header/Header'
 import {Toolbar} from '@/components/toolbar/Toolbar'
@@ -6,34 +6,11 @@ import {Formula} from '@/components/formula/Formula'
 import {Table} from '@/components/table/Table'
 import {createStore} from '@core/createStore'
 import {rootReducer} from '@/redux/rootReducer'
-import {storage, debounce} from '@/core/utils'
+import {storage} from '@/core/utils'
 import {normalizeInitialState} from '@/redux/initialState'
+import {StateProcessor} from '@core/page/StateProcessor'
+import {LocalStorageClient} from '@/pages/shared/LocalStorageClient'
 
-
-function storageName(param) {
-	return 'excel:' + param
-}
-
-class StateProcessor() {
-	constructor(client, delay = 300) {
-		this.client = client
-		this.listen = debounce(this.listen.bind(this), delay)
-	}
-
-	listen() {
-		this.client.save(state)
-	}
-
-	get() {
-		return this.client.get()
-	}
-}
-
-class LocalStorageClient {
-	constructor(name) {
-		this.name = name
-	}
-}
 
 export class ExcelPage extends Page {
 	constructor(param) {
@@ -41,22 +18,18 @@ export class ExcelPage extends Page {
 
 		this.storeSub = null
 		this.processor = new StateProcessor(
+			/*
+				Передаём клиент (localStorage или сервер) для сохранения
+				и получения state
+			*/
 			new LocalStorageClient(this.params)
 		)
 	}
 
 	async getRoot() {
-		// const params = this.params ? this.params : Date.now().toString()
-
-		// const state = storage(storageName(params))
 		const state = await this.processor.get()
 		const initialState = normalizeInitialState(state)
 		const store = createStore(rootReducer, initialState)
-
-		// const stateListener = debounce( state => {
-		// 	storage(storageName(params), state)
-		// }, 300)
-
 
 		this.storeSub = store.subscribe(this.processor.listen)
 

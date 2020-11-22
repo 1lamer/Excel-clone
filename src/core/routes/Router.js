@@ -1,10 +1,12 @@
 import {$} from '@core/dom'
 import {ActiveRoute} from '@core/routes/ActiveRoute'
+import {Loader} from '@/components/Loader'
 
 // For testing
 // const {$} = require('./../dom')
 // const {ActiveRoute} = require('./ActiveRoute')
 
+/*Отвечает за наполнение главного селектора контентом (страницей эквсель или главным меню)*/
 export class Router {
 	constructor(selector, routes) {
 		if (!selector) {
@@ -13,6 +15,8 @@ export class Router {
 
 		this.$placeholder = $(selector)
 		this.routes = routes
+
+		this.loader = new Loader()
 		this.page = null
 
 		this.changePageHandler = this.changePageHandler.bind(this)
@@ -25,19 +29,21 @@ export class Router {
 		this.changePageHandler()
 	}
 
-	changePageHandler(event) {
+	async changePageHandler(event) {
 		if (this.page) {
 			this.page.destroy()
 		}
 
-		this.$placeholder.clear()
+		this.$placeholder.clear().append(this.loader)
 
 		const Page = ActiveRoute.path.includes('excel')
 			? this.routes.excel
 			: this.routes.dashboard
 		this.page = new Page(ActiveRoute.param)
 
-		this.$placeholder.append(this.page.getRoot())
+		const root = await this.page.getRoot()
+		
+		this.$placeholder.clear().append(root)
 
 		this.page.afterRender()
 	}
