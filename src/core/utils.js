@@ -16,7 +16,7 @@ export function range(start, end) {
 		.map( (_, index) => start + index)
 }
 
-
+/*Получаем или заносим новый state в localStoragw*/
 export function storage(key, data = null) {
 	if (!data) {
 		return JSON.parse(localStorage.getItem(key))
@@ -57,7 +57,7 @@ export function debounce(fn, wait) {
 	}
 }
 
-
+/*Клонирует объект, чтобы избавиться от мутаций*/
 export function clone(obj) {
 	return JSON.parse(JSON.stringify(obj))
 }
