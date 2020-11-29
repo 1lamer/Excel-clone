@@ -39,7 +39,14 @@ export class Router {
 		const Page = ActiveRoute.path.includes('excel')
 			? this.routes.excel
 			: this.routes.dashboard
-		this.page = new Page(ActiveRoute.param)
+
+		/*
+			Создаие и корневого элемента для реализации слушателей
+			из класса DomListener
+		 */
+		const $root = $.create('main', 'dashboard')
+
+		this.page = new Page($root, ActiveRoute.param)
 
 		const root = await this.page.getRoot()
 		

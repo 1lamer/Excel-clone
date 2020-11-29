@@ -105,6 +105,12 @@ class Dom {
 		return this
 	}
 
+	// isChecked() {
+	// 	if (this.$el.checked === true) {
+	// 		return 
+	// 	}
+	// }
+
 	attr(name, value) {
 		if (value) {
 			this.$el.setAttribute(name, value)

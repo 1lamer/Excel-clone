@@ -22,7 +22,8 @@
 		text-align: center;
 		color: #000;
 
-		&:hover {
+		&:focus, &:hover {
+			outline: none;
 			border-color: green;
 
 			cursor: pointer;

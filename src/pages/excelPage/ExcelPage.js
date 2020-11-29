@@ -13,8 +13,8 @@ import {LocalStorageClient} from '@/pages/shared/LocalStorageClient'
 
 
 export class ExcelPage extends Page {
-	constructor(param) {
-		super(param)
+	constructor($root, param) {
+		super($root, param)
 
 		this.storeSub = null
 		this.processor = new StateProcessor(

@@ -31,9 +31,7 @@
 
 	&__functional {}
 
-	&__button {
-		@include button(green);
-	}
+	&__button {}
 }
 
 .material-icons {
