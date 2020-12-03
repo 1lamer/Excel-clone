@@ -2,12 +2,22 @@
 .earlier-tb {
 	padding: 1rem;
 
+	&__row {
+		display: flex;
+		align-items: top;
+	}
+
+	&__button {
+		margin-left: -2.5px;
+	}
+
 	&__header {
+		flex-grow: 1;
 		display: flex;
 		justify-content: space-between;
 
 		margin-bottom: 10px;
-		padding: 0 12px;
+		padding: 0 30px;
 
 		font-size: 16px;
 		font-weight: 500;
@@ -20,27 +30,70 @@
 
 	&__record {
 		display: flex;
+		align-items: center;
+
+		margin-bottom: 10px;
+	}
+
+	&__container {
+		position: relative;
+	}
+	
+	&__check {
+		position: absolute;
+
+		transform: translateY(-50%);
+
+		width: 20px;
+		height: 20px;
+
+		border: 1px solid $color-primary;
+		border-radius: 5px;
+		background-color: #ffffff;
+
+		&::before {
+			content: "";
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+
+			transform: translate(-50%, -50%);
+
+			display: none;
+
+			width: 10px;
+			height: 10px;
+			border-radius: 5px;
+
+			background-color: $main-color;
+		}
+	}
+
+	&__container input[type="checkbox"]:checked + &__check {
+		&::before {display: block;}
+	}
+
+	&__link {
+		flex-grow: 1;
+		display: flex;
 		justify-content: space-between;
 		align-items: center;
 
-		padding: 12px 14px 12px 16px;
-		margin-bottom: 10px;
+		padding: 12px 10px;
+		margin: 0 25px;
 
-		&:hover {
+		cursor: pointer;
+
+		font-size: 14px;
+		color: #202124;
+
+		&:hover, &:focus {
+			outline: none;
 			border-radius: 25px;
-			
-			background: #e6f4ea;
-		}
 
-		a {
-			cursor: pointer;
-
-			font-size: 14px;
-			color: #202124;
-
-			&:hover {
-				text-decoration: underline;
-			}
+		    background: $main-color;
 		}
 	}
+	
 }

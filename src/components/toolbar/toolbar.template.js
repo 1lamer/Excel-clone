@@ -1,3 +1,5 @@
+import {rgb2hex} from '@/components/toolbar/toolbar.functions'
+
 function toButton(button) {
 	const meta = `
 	data-type="button"
@@ -10,6 +12,7 @@ function toButton(button) {
 		>
 			<span 
 				class="material-icons"
+				style="user-select: none"
 				${meta}
 			>
 				${button.icon}
@@ -18,7 +21,7 @@ function toButton(button) {
 	`
 }
 
-export function createToolbar(state) {
+function createToolbarPannel(state) {
 	const buttons = [
 		{
 			icon: 'format_align_left',
@@ -52,4 +55,17 @@ export function createToolbar(state) {
 		},
 	]
 	return buttons.map(toButton).join('')
+}
+
+
+export function createToolbar(state) {
+	const color = rgb2hex(state['color'])
+	return `
+		${createToolbarPannel(state)}
+
+		<label data-type="color" for="color">
+			<span class="visually-hidden">Select color</span>
+			<input data-type="color" id="color" type="color" value="${color}">
+		</label>
+	`
 }

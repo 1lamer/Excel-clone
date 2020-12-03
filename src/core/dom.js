@@ -62,6 +62,10 @@ class Dom {
 		return this.$el.dataset
 	}
 
+	get value() {
+		return this.$el.value
+	}
+
 	closest(selector) {
 		return $(this.$el.closest(selector))
 	}
@@ -104,6 +108,12 @@ class Dom {
 		this.$el.focus()
 		return this
 	}
+
+	// isChecked() {
+	// 	if (this.$el.checked === true) {
+	// 		return 
+	// 	}
+	// }
 
 	attr(name, value) {
 		if (value) {
