@@ -69,7 +69,7 @@ export function createDashboard($root) {
 
 	return $root.html(`
 		<header class="dashboard__db-header db-header">
-			<h1 class="db-header__title">Excel control panel</h1>
+			<h1 class="db-header__title">Dashboard</h1>
 		</header>
 
 		<section class="dashboard__new-tb new-tb">

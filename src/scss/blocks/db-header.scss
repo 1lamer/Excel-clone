@@ -8,5 +8,22 @@
 
 	background: #fff;
 
-	box-shadow: 0 2px 5px 2px rgba(60, 64, 67, 0.15);
+	box-shadow: 0 10px 10px 2px rgba(60, 64, 67, 0.15);
+
+	&__title {
+		background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+		-webkit-background-clip: text;
+		background-clip: text;
+
+		font-weight: 700;
+		letter-spacing: 0.2rem;
+		color: transparent;
+
+		transition: all 0.2s;
+
+		&:hover {
+			text-shadow: 0.5rem 1rem 2rem rgba(#000, 0.2);
+			transform: scale(1.1);
+		}
+	}
 }

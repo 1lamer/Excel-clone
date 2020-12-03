@@ -2,8 +2,9 @@
 .new-tb {
 	padding: 1.5rem;
 
-	background: #dadce0;
-	// background-image: url('image/js-back.jpg');
+	// background: #dadce0;
+	background-color: #fbb034;
+	// background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
 
 
 	&__create {
@@ -25,11 +26,11 @@
 
 		&:focus, &:hover {
 			outline: none;
-			border-color: green;
+			border-color: #fbb034;
 
 			cursor: pointer;
 
-			color: green;
+			color: #fbb034;
 		}
 	}
 }

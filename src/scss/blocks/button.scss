@@ -1,6 +1,6 @@
 .button {
 
-	@include button(green);
+	@include button($main-color);
 
 	&--delete {}
 
